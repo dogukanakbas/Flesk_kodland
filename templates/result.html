@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Quiz Result</h1>
+    <p>Your score: {{ score }}%</p>
+
+    {% if score == 100 %}
+    <p>Congratulations! You achieved a perfect score!</p>
+    {% elif score >= 80 %}
+    <p>Great job! You did really well.</p>
+    {% elif score >= 50 %}
+    <p>Good effort! There's room for improvement.</p>
+    {% else %}
+    <p>Don't worry, keep practicing and you'll get better!</p>
+    {% endif %}
+
+    <div>
+        <p>Your best score: {{ session.get('best_score', 0) }}%</p>
+        <a href="{{ url_for('quiz') }}">Take the quiz again</a>
+    </div>
+
+    <footer>
+        <p>Doğukan Akbaş</p>
+    </footer>
+</body>
+</html>
